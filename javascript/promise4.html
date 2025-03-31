@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function increseAndPrint(n) {
+            return new Promise(function(resolve) {
+                setTimeout(function() {
+                    const incresed = n + 1;
+                    console.log(`incresed : ${incresed}`);
+                    resolve(incresed);
+                }, 1000);
+            });
+        }
+        //async - await - Promise 객체 >> resolve 
+        //async - try/catch - Pormise 객체 >> reject
+        async function _call(){
+            try{
+                const data1 = await increseAndPrint(0);
+                const data2 = await increseAndPrint(data1);
+                const data3 = await increseAndPrint(data2);
+                console.log(`data3 : ${data3}`);
+            } catch(e) {
+                console.log(e);
+            }
+        }
+        _call();
+    </script>
+</body>
+</html>
